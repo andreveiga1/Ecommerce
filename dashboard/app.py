@@ -397,30 +397,7 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
     # ── Footer ──
-    demo_badge = ""
-    if st.session_state.get("db_available") == False:
-        demo_badge = """
-        <div style="
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 14px;
-            margin-top: 8px;
-            background: rgba(253,121,168,0.08);
-            border-radius: 10px;
-            border: 1px solid rgba(253,121,168,0.25);
-        ">
-            <span style="font-size: 0.85rem;">🧪</span>
-            <span style="
-                color: #FD79A8;
-                font-size: 0.7rem;
-                font-weight: 600;
-                letter-spacing: 0.04em;
-            ">MODO DEMO · dados fictícios</span>
-        </div>
-        """
-
-    st.markdown(f"""
+    st.markdown("""
     <div style="padding: 0 1.2rem; margin-top: 0.5rem;">
         <div style="
             display: flex;
@@ -438,9 +415,27 @@ with st.sidebar:
             </svg>
             <span style="color: #5A5A7A; font-size: 0.7rem; font-weight: 500;">Supabase · Gold Layer</span>
         </div>
-        {demo_badge}
     </div>
     """, unsafe_allow_html=True)
+
+    if st.session_state.get("db_available") == False:
+        st.markdown("""
+        <div style="
+            margin: 8px 1.2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            background: rgba(253,121,168,0.08);
+            border-radius: 10px;
+            border: 1px solid rgba(253,121,168,0.25);
+        ">
+            <span style="font-size: 0.85rem;">&#x1F9EA;</span>
+            <span style="color: #FD79A8; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em;">
+                MODO DEMO &middot; dados fict&iacute;cios
+            </span>
+        </div>
+        """, unsafe_allow_html=True)
 
 # Get current page
 page = st.session_state.current_page
