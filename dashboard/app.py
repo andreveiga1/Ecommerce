@@ -397,32 +397,9 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
     # ── Footer ──
-    st.markdown("""
-    <div style="
-        padding: 0 1.2rem;
-        margin-top: 0.5rem;
-    ">
-        <div style="
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 14px;
-            background: rgba(108,92,231,0.06);
-            border-radius: 10px;
-            border: 1px solid rgba(108,92,231,0.1);
-        ">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5A5A7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <ellipse cx="12" cy="5" rx="9" ry="3"/>
-                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
-                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
-            </svg>
-            <span style="
-                color: #5A5A7A;
-                font-size: 0.7rem;
-                font-weight: 500;
-            ">Supabase · Gold Layer</span>
-        </div>
-        """ + ("""
+    demo_badge = ""
+    if st.session_state.get("db_available") == False:
+        demo_badge = """
         <div style="
             display: flex;
             align-items: center;
@@ -441,7 +418,27 @@ with st.sidebar:
                 letter-spacing: 0.04em;
             ">MODO DEMO · dados fictícios</span>
         </div>
-        """ if st.session_state.get("db_available") == False else "") + """
+        """
+
+    st.markdown(f"""
+    <div style="padding: 0 1.2rem; margin-top: 0.5rem;">
+        <div style="
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 14px;
+            background: rgba(108,92,231,0.06);
+            border-radius: 10px;
+            border: 1px solid rgba(108,92,231,0.1);
+        ">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5A5A7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+            </svg>
+            <span style="color: #5A5A7A; font-size: 0.7rem; font-weight: 500;">Supabase · Gold Layer</span>
+        </div>
+        {demo_badge}
     </div>
     """, unsafe_allow_html=True)
 
